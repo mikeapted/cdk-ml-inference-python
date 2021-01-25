@@ -13,10 +13,12 @@ class CdkMyApiPythonStack(core.Stack):
 
         my_api_function = _lambda.DockerImageFunction(self, 'MyApiFunction',
             code = _lambda.DockerImageCode.from_image_asset('../src'),
+            timeout = core.duration.seconds(30),
+            memory_size = 2048
         )
 
         my_default_integration = apigv2int.LambdaProxyIntegration(
-            handler = my_api_function,
+            handler = my_api_function
         )
 
         my_http_api = apigv2.HttpApi(self, 'MyApi',
