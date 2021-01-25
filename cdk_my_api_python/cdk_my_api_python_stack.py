@@ -13,7 +13,7 @@ class CdkMyApiPythonStack(core.Stack):
 
         my_api_function = _lambda.DockerImageFunction(self, 'MyApiFunction',
             code = _lambda.DockerImageCode.from_image_asset('../src'),
-            timeout = core.duration.seconds(30),
+            timeout = core.Duration.seconds(30),
             memory_size = 2048
         )
 
